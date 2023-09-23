@@ -5,6 +5,20 @@ My SuperSlicer .ini file to be loaded in the Vendor folder
 I modified the Ratrig.ini file that can be found in the %appdata%\SuperSlicer\vendor directory (go to "Help" and click "Show configuration folder" to easily locate this file), assuming you have previously installed the Ratrig printer from the configuration menu.
 
 As I struggled with maintaining and aligning various parameters in between different print and printer profiles for my atrig VCore-3.1-300 3D-printer, I read an article on [Hackaday](https://hackaday.com/2022/10/18/3d-printering-managing-multiple-printing-profiles/) about SuperSlicer's Bundles . Althoug I do not fully grasp what this user is actually exporting, I started editing a copy of my Ratrig.ini file. Slowly I started to understand what the user is writing about.
+# How to Download
+**1)** Navigate to the .ini file.
+
+**2)** Right click "Raw" and click "Save link as"
+
+**If you do not use the "Raw" button, you will get errors trying to import.**
+
+- ![](Images/Download.png) 
+
+Alternatively, download the whole repository as .zip:
+
+- ![](Images/DownloadRepo.png) 
+
+- Or, if you have git installed, just `git clone https://github.com/AndrewEllis93/Ellis-SuperSlicer-Profiles.git` from your directory of choice.
 
 # How it works
 The general setup is such;
