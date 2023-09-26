@@ -22,7 +22,7 @@ Alternatively, download the whole repository as .zip:
 
 # How it works
 The general setup is such;
-The file **can* contain 4 main categories that correspond with the tabs in SuperSlicer;
+The file **can** contain 4 main categories that correspond with the tabs in SuperSlicer;
 - [printer_model:MDL]
 - [print:####]
 - [printer:XYZ]
