@@ -47,6 +47,7 @@ Yes, that you can STILL do. With my ini file updated, I still make tweaks during
 **If you do not use the "Raw" button, you will get errors trying to import.**
 
 **Alternatively, download the whole repository as .zip**
+
 ## How to install
 1. Go to your configuration folder. Easiest way is to open SuperSlicer and click Help / Show Configuration Folder:
 ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/574e2a71-dbb2-44c9-afe4-944270b470a0)
@@ -62,16 +63,17 @@ Yes, that you can STILL do. With my ini file updated, I still make tweaks during
 
 # Build-up of the .ini file
 ## General
+The .ini file contains 5 sections / chapters (whatever you want to call them)
 The beginning of this file has some general stuff included so SuperSlicer knows what kind of printer it is dealing with, such as
 - [vendor]
-- [printer_model:FWM-01]
+- [printer_model]
 
-Further more, this file has "Chapters" for each Tab in SuperSlicer.
+Further more, this file has "sections" for each Tab in SuperSlicer.
 - [print]
 - [filament]
 - [printer]
 
-Each corresponding "chapter" contains all the settings that you can work with to build your profile
+Each corresponding "section" contains all the settings that you can work with to build your profile
 
 # How to build up the file
 All entries (or chapters) are stated within square brackets and contain the Tabname and the name of the entry: "[Tabname:entry name]"
@@ -387,4 +389,9 @@ inherits = *common*; *0.20mm*; *0.60nzl*
 [print:0.30mm 0.60nzl]
 inherits = *common*; *0.30mm*; *0.60nzl*
 ```
+# The Actual RatRig.ini
+My Ratrig.ini contains these sections;
+![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/07ed95bf-d7e9-49c8-a76e-2c3d52590c37)
+
+
 
