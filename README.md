@@ -103,9 +103,9 @@ Now we need to create an entry that SuperSlicer is actualy going to show in the 
 - this would show up as:
 ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/b4f6ff60-3452-4d00-a7f1-d8fd7ee18346)
 
-**Note: I have not added any paramater in that entry and the picture only shows defaults at the moment.**
+**Note: I have not added any parameter in that entry and the picture only shows defaults at the moment.**
 
-To now use the hidden entries in the visible entry, use the ``inherits`` paramater like so:
+To now use the hidden entries in the visible entry, use the ``inherits`` parameter like so:
 ``inherits:*common PETG*; *BRAND A PETG*``
 
 The entry would look something like this:
@@ -124,7 +124,7 @@ Above is a simplefied version of what I use.
 
 
 
-# my usecase
+# Usecase
 To explain a bit more in detail how I believe the file works, see below explanations.
 
 ## [vendor]
@@ -148,10 +148,97 @@ bed_texture = rr-vc-300.svg
 In the configuration wizard, this will show as:
 ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/3a605768-c311-47ee-a474-cb9f944dd586)
 
+### [printer]
+Although in SuperSlicer, the printer-tab is the last, Tab, I believe this should be the first tab (at least in my usecase). 
+
+I use my printer with a variety of nozzle diameters (in this example 0.4mm and 0.6mm but in my actual profile I also use 0.25mm and 0.8mm) and multiple buildplates (Smooth PEI-sheet, Powdercoated PEI). I have calibrated my nozzle Z-offset on the most used plate (powdercoated PEI). I have learned that with the smooth PEI and POA I need a different Z-Offset. I have inserted these parameters in my printer profiles. 
+
+In my workflow, I start in the Printer tab, choosing the right buildplate and nozzle size. In the example here, I would create a (hidden) ``[printer:*common*]`` section that houses all parameters you would always need, such as;
+- machine limits (accel, feedrate)
+- all specific GCODES for starting, interlayer and ending
+- see the included profile_test.ini
+
+Next I create a printer specific section that defines one particulare printer (in case you would operate more printers of the same vendor and type, this could be handy. If not, this can also be combined with above common entry):
+``[printer:*FWM-01-klipper*]`` (see included example to see what I have stuffed in here)
+
+Next I want to make a separate entry ``[printer:*PEI-sheet*]`` for the differences in buildplate. The \*common* section is based on a z-offset with a powdercoated buildplate (= z-offset = 0). So the minimum I need to define here is the z-offset.
+Same goes for the entries for the Nozzle sizes, ``[printer:*0.40nozzle*]`` and ``[printer:*0.60nozzle*]``. 
+
+In general, below is now what we more or less have. We do NOT have any actual printer profiles as all printer entries are still hidden (due to the addition of the asterix' \*\, remember!!!)
+
+```
+[printer:*common*]
+before_layer_gcode = ;BEFORE LAYER CHANGE\nTIMELAPSE_TAKE_FRAME
+between_objects_gcode = 
+color_change_gcode = M600
+end_gcode = ;END PRINTER GCODE\nEND_PRINT\nSET_SKEW CLEAR=1\nM220 S100	;set printspeed back to 100% in case I have tweaked it during printing\nSET_GCODE_OFFSET Z=0	;Set Z-offset back to 0
+gcode_flavor = klipper
+layer_gcode = ;AFTER LAYER CHANGE GCODE\nSET_PRINT_STATS_INFO CURRENT_LAYER={layer_num + 1}\n;M118 Layer {layer_num+1}/[total_layer_count]: {filament_settings_id[0]}
+machine_limits_usage = time_estimate_only
+machine_max_acceleration_e = 20000
+machine_max_acceleration_extruding = 8000
+machine_max_acceleration_retracting = 9000
+machine_max_acceleration_travel = 20000
+machine_max_acceleration_x = 20000
+machine_max_acceleration_y = 20000
+machine_max_acceleration_z = 100
+
+[printer:*FWM-01-klipper*]
+bed_shape = 0x0,300x0,300x300,0x300
+max_print_height = 300
+printer_model = FWM-01
+min_layer_height = 0.06
+retract_lift_above = 0.2
+use_firmware_retraction = 1
+use_relative_e_distances = 1
+
+[printer:*PEI-sheet*]
+z-offset = 0.130
+printer_notes = Profile for smooth PEI sheet / Sticker\n\n\n
+
+[printer:*0.40nozzle*]
+nozzle_diameter = 0.40
+printer_variant = 0.40
+extruder_colour = #FF0000
+
+[printer:*0.60nozzle*]
+nozzle_diameter = 0.60
+printer_variant = 0.60
+extruder_colour = #FF0000
+```
+
+Now, to create the actual printer profiles we start using the ``inherits`` function. The first actual printer profile will need to contain \*common\* (as should all profiles), the printer specific section and a nozzle size.
+```
+[printer:FWM-01 40nzl Powdercoated]
+inherits = *common*; *FWM-01-klipper*; *0.40nozzle*
+```
+The next profile would be identicle accept for the buildplate / z-offset. I can do that in 2 ways;
+- include all the hidden entries, one by one; ``inherits = *common*; *FWM-01-klipper*; *0.40nozzle*; *PEI-sheet*``
+- inherits the previous profile and add the \*PEI-sheet\*; ``inherits = FWM-01 40nzl Powdercoated;*PEI-sheet*``
+
+I have not tested the actual difference between the 2 methods but I suspect that the order of the mentioned entries in the ``inherits`` is important. In case 2 entries both have the same parameter but with a different value, the latest in line overrules the first one... but again, I have not checked this.
+
+The next 2 entries will be more or less the same, but for the 0.60mm nozzle diameter
+```
+[printer:FWM-01 60nzl Powdercoated]
+inherits = *common*; *FWM-01-klipper*; *0.60nozzle*
+
+[printer:FWM-01 60nzl PEI-sheet]
+inherits = FWM-01 60nzl Powdercoated;*PEI-sheet*
+```
+If we have done our job right, Superslicers printer profiles would show:
+![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/0a1d2a05-daf1-40e7-890f-b17228c8c551)
+
+
 
 ## [print]
 Here we store all the settings that are changing due to our printing preferences. The settings from the Print tab of SuperSlicer are in general:
 ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/0d0d9320-301b-4c55-aa12-e71a3ac1f4e7)
+
+They way you can use this is to make seperate entries for:
+- different print speeds (high quality with lower speeds or flow rates or higher flowrates with possibly lower quality prints
+- different layer heights for easy switching
+- different profiles for different nozzle diameters
 
 ### Print \*Hidden*\
 
@@ -160,7 +247,7 @@ Here we store all the settings that are changing due to our printing preferences
 
 ### [filament]
 
-### [printer]
+
 
 
 
