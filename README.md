@@ -33,9 +33,11 @@ All entries (or chapters) are stated within square brackets and contain the Tabn
 
 **Note: There are NO spaces between the tabname and entry name, only a colon**
 
-## STEP 1: Hidden entries
-You can create hidden entries that will not be shown in SuperSlicer but that you can use to combine later when creating the final visible profile. As per the above example of BRAND-A PETG, I can create an entry for \"common PETG"\ that contains settings that I would like to always use when printing PETG (NOT brand specific for instance). Such a hidden entry is made by putting the entry name between asterix' \*\, like so:
-``[filament:*common PETG*]``
+## STEP 1: Building block: Hidden entries
+You can create hidden entries that will not be shown in SuperSlicer but that you can use to combine later when creating the final visible profile. I can create an entry for \"common PETG"\ that contains settings that I would like to always use when printing PETG (NOT brand specific for instance). Such a hidden entry is made by putting the entry name between asterix' \*, like so:
+
+**``[filament:*common PETG*]``**
+**NOTE: Minde the Asterix at the beginning and and of the entry name!!!**
 
 Items that you can include in the common part are for instance:
 - bridge_fan_speed 
@@ -47,7 +49,7 @@ Items that you can include in the common part are for instance:
 - max_fan_speed 
 - max_speed_reduction 
 
-The part in the ini file would like like so:
+The part in the ini file would look like so:
 ```
 [filament:*common PETG*]
 bridge_fan_speed = 40
@@ -97,7 +99,7 @@ temperature = 240
 filament_max_speed = 290
 ```
 
-## STEP 2: visible entries
+## STEP 2: Profiles: visible entries
 Now we need to create an entry that SuperSlicer is actualy going to show in the interface. If you want to create a filament profile for BRAND-A PETG, you would state
 ``[filament:BRAND-A PETG]`` **note: NO astrix \*\.**
 - this would show up as:
@@ -105,7 +107,7 @@ Now we need to create an entry that SuperSlicer is actualy going to show in the 
 
 **Note: I have not added any parameter in that entry and the picture only shows defaults at the moment.**
 
-To now use the hidden entries in the visible entry, use the ``inherits`` parameter like so:
+To now use the building blocks from above, the hidden entries, in the actual Profile, the visible entry, use the ``inherits`` parameter like so:
 ``inherits:*common PETG*; *BRAND A PETG*``
 
 The entry would look something like this:
