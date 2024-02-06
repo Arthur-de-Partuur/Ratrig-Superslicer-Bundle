@@ -76,15 +76,15 @@ Further more, this file has "sections" for each Tab in SuperSlicer.
 Each corresponding "section" contains all the settings that you can work with to build your profile
 
 # How to build up the file
-All entries (or chapters) are stated within square brackets and contain the Tabname and the name of the entry: "[Tabname:entry name]"
+All entries (or chapters) are stated within square brackets and contain the Tabname and the name of the entry: ``[tabname:entry name]``
 
 **Note: There are NO spaces between the tabname and entry name, only a colon**
 
 ## STEP 1: Building blocks: Hidden entries
-You can create hidden entries that will not be shown in SuperSlicer but that you can use to combine later when creating the final visible profile. I can create an entry for \"common PETG"\ that contains settings that I would like to always use when printing PETG (NOT brand specific for instance). Such a hidden entry is made by putting the entry name between asterix' \*, like so:
+You can create hidden entries that will not be shown in SuperSlicer but that you can use to combine later when creating the final visible profile. You can create an entry for \"common PETG"\ that contains settings that you would like to always use when printing PETG (NOT brand specific for instance). Such a hidden entry is made by putting the entry name between **asterix' \*** like so:
 
 **``[filament:*common PETG*]``**
-**NOTE: Minde the Asterix at the beginning and and of the entry name!!!**
+**NOTE: Mind the Asterix at the beginning and end of the entry name!!!**
 
 Items that you can include in the common part are for instance:
 - bridge_fan_speed 
