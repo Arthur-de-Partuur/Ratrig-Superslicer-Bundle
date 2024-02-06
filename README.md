@@ -8,14 +8,19 @@ As I struggled with maintaining and aligning various parameters in between diffe
 
 ## How to Download
 **1)** Navigate to the .ini file.
+
 **2)** Right click "Raw" and click "Save link as"
+
 **If you do not use the "Raw" button, you will get errors trying to import.**
 
 **Alternatively, download the whole repository as .zip**
 
 # Build-up of this file
 ## General
-The beginning of this file has some general stuff included so SuperSlicer knows what kind of printer it is dealing with, such as Vendor, Version of the config file etc.
+The beginning of this file has some general stuff included so SuperSlicer knows what kind of printer it is dealing with, such as
+- [vendor]
+- [printer_model:FWM-01]
+
 Further more, this file has "Chapters" for each Tab in SuperSlicer.
 - [print]
 - [filament]
@@ -24,27 +29,128 @@ Further more, this file has "Chapters" for each Tab in SuperSlicer.
 Each corresponding "chapter" contains all the settings that you can work with to build your profile
 
 ## How does it work?
-All Entries (or chapters) are stated within square brackets and contain the Tabname and the name of the entry: "[Tabname:entry name]"
+All entries (or chapters) are stated within square brackets and contain the Tabname and the name of the entry: "[Tabname:entry name]"
 
 **Note: There are NO spaces between the tabname and entry name, only a colon**
 
+### STEP 1: Hidden entries
+You can create hidden entries that will not be shown in SuperSlicer but that you can use to combine later when creating the final visable profile. As per the above example of BRAND-A PETG, I can create an entry for \"common PETG"\ that contains settings that I would like to always use when printing PETG (NOT brand specific for instance). Such a hidden entry is made by putting the entry name between asterix' \*\, like so:
+``[filament:*common PETG*]``
 
-So if you want to create a filament profile for BRAND-A PETG, you would state
-- [filament:BRAND-A PETG]
+Items that you can include in the common part are for instance:
+- bridge_fan_speed 
+- chamber_temperature 
+- disable_fan_first_layers
+- fan_always_on 
+- fan_below_layer_time 
+- filament_type 
+- max_fan_speed 
+- max_speed_reduction 
+
+The part in the ini file would like like so:
+```
+[filament:*common PETG*]
+bridge_fan_speed = 40
+chamber_temperature = 0
+disable_fan_first_layers = 1
+fan_always_on = 1
+fan_below_layer_time = 10
+filament_type = PETG
+max_fan_speed = 30
+max_speed_reduction = 90%
+```
+
+Another hidden entry that you could make is Brand specific info:
+
+``[filament:*BRAND A PETG*]``
+
+Items that you can include in the brand specific part are for instance:
+- extrusion_multiplier
+- filament_colour
+- filament_cost
+- filament_density 
+- filament_diameter
+- filament_shrink
+- filament_soluble
+- filament_spool_weight
+- filament_vendor
+- first_layer_bed_temperature
+- first_layer_temperature
+- temperature
+- filament_max_speed
+
+The part in the ini file would like like so:
+```
+[filament:*BRAND A PETG*]
+extrusion_multiplier = 0.984
+filament_colour = #000000
+filament_cost = 27.5
+filament_density = 1.28
+filament_diameter = 1.7426
+filament_shrink = 99.646%
+filament_soluble = 0
+filament_spool_weight = 1000
+filament_vendor = BRAND-A
+first_layer_bed_temperature = 80
+first_layer_temperature = 250
+temperature = 240
+filament_max_speed = 290
+```
+
+### STEP 2: Combing hidden entries into visable entries
+Now we need to create an entry that SuperSlicer is actualy going to show in the interface. If you want to create a filament profile for BRAND-A PETG, you would state
+``[filament:BRAND-A PETG]`` **note: NO astrix \*\.**
 - this would show up as:
-![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/483a9fa8-d807-4a39-a116-417afd62d986)
+![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/b4f6ff60-3452-4d00-a7f1-d8fd7ee18346)
+
+**Note: I have not added any paramater in that entry and the picture only shows defaults at the moment.**
+
+To now use the hidden entries in the visible entry, use the ``inherits`` paramater like so:
+``inherits:*common PETG*; *BRAND A PETG*``
+
+The entry would look something like this:
+```
+[filament:BRAND-A PETG]
+inherits:*common PETG*; *BRAND A PETG*
+compatible_printers_condition = printer_model=~/.*FWM-01.*/ && nozzle_diameter[0]==0.40
+filament_max_volumetric_speed = 24
+start_filament_gcode = "; Filament gcode\nSET_PRESSURE_ADVANCE ADVANCE=[PA040]	;PA for 0.40nzl\n;SET_RETRACTION RETRACT_LENGTH=0.5 UNRETRACT_EXTRA_LENGTH=0.0"
+```
+Now, SuperSlicers combines this into one profile, like so:
+![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/5a19afc3-1b6c-48b5-9b62-1749f4d588a8)
+
+As you can see, I have added also a line for Max Volumetric flow, start_filament_gcode etc, etc.
+Above is a simplefied version of what I use. 
 
 
-## Specific
+
+# my usecase
 To explain a bit more in detail how I believe the file works, see below explanations.
 
 ### [vendor]
-Vendor name will be shown by the Config Wizard.
+Vendor name will be shown by the Config Wizard. In my example, I have used 
+``name = PROFILE_TEST``
 
-### [printer_model:VC3_300]
-Particularly the [printer model: can be handy in case you use more then one printer and want to make dependances between filaments and printers, for instance
+This is also the name of the INI file and I believe there should also be a folder with the same name to put bed_stl and png files in (not realy sure how this works yet)
 
-###
+### [printer_model:FWM-01]
+Particularly the ``[printer model: ]`` can be handy in case you use more then one printer and want to make dependances between filaments and printers, for instance
+see above also my inclusion for compatible_printers_condition = printer_model=~/.*FWM-01.*/
+In this example, I have used:
+```
+name = Chris_McVie
+variants = 0.40; 0.60
+technology = FFF
+family = FLEETWOODMAC
+bed_model = rr-vc-300.stl
+bed_texture = rr-vc-300.svg
+```
+
+### [print]
+
+### [filament]
+
+### [printer]
 
 
 
