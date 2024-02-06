@@ -4,7 +4,14 @@ My SuperSlicer .ini file to be loaded in the Vendor folder
 ## Introduction
 I modified the Ratrig.ini file that can be found in the %appdata%\SuperSlicer\vendor directory (go to "Help" and click "Show configuration folder" to easily locate this file), assuming you have previously installed the Ratrig printer from the configuration menu.
 
-As I struggled with maintaining and aligning various parameters in between different print and printer profiles for my atrig VCore-3.1-300 3D-printer, I read an article on [Hackaday](https://hackaday.com/2022/10/18/3d-printering-managing-multiple-printing-profiles/) about SuperSlicer's Bundles . Althoug I do not fully grasp what this user is actually exporting, I started editing a copy of my Ratrig.ini file. Slowly I started to understand what the user is writing about.
+As I struggled with maintaining and aligning various parameters in between different print and printer profiles for my Ratrig VCore-3.1-300 3D-printer, I read an article on [Hackaday](https://hackaday.com/2022/10/18/3d-printering-managing-multiple-printing-profiles/) about SuperSlicer's Bundles . Althoug I do not fully grasp what this user is actually exporting, I started editing a copy of my Ratrig.ini file. Slowly I started to understand what the user is writing about.
+
+## Why,.... for HEAVENS SAKE WHY!!!!
+Yep,.... good question...
+
+I was experiencing some issues with all the different parameters and how to align these between print profiles and filament profiles.
+For instance, when I was tuning a PETG profile for Brand A, with a nozzle of 0.4mm I learned that the best result came with a temperature of 240 degrees C.
+This is also true for all other profiles of that same brand but with another nozzle diameter. With below method, I now can change
 
 ## How to Download
 **1)** Navigate to the .ini file.
