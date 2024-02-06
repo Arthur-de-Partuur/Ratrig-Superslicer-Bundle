@@ -289,19 +289,42 @@ They way you can use this is to make seperate entries for:
 - different layer heights for easy switching
 - different profiles for different nozzle diameters
 
-As before, start off with a common entry and fantasise from there:
+As before, start off with a \*common\* entry and fantasise from there:
 ```
 [print:*common*]
 all generic stuff here
+
 [print:*0.20mm*]
-;all settings related to Layer height 0.20mm such as
+;all print settings related to Layer height 0.20mm such as
 layer_height = 0.20
 bottom_solid_layers = 3
+
 [print:*0.30mm*]
-;all settings related to Layer height 0.30mm
+;all print settings related to Layer height 0.30mm
 layer_height = 0.30
 bottom_solid_layers = 2
 
+[print:*0.40nzl*]
+;all print settings related to nozzle size 0.40mm
+compatible_printers_condition = printer_model=~/.*FWM-01.*/ && nozzle_diameter==0.40
+external_perimeter_extrusion_width = 0.4
+extrusion_width = 0.4
+first_layer_extrusion_width = 0.4
+infill_extrusion_width = 0.4
+perimeter_extrusion_width = 0.4
+solid_infill_extrusion_width = 0.4
+top_infill_extrusion_width = 0.4
+
+[print:*0.60nzl*]
+;all print settings related to nozzle size 0.60mm
+compatible_printers_condition = printer_model=~/.*FWM-01.*/ && nozzle_diameter==0.60
+external_perimeter_extrusion_width = 0.6
+extrusion_width = 0.6
+first_layer_extrusion_width = 0.6
+infill_extrusion_width = 0.6
+perimeter_extrusion_width = 0.6
+solid_infill_extrusion_width = 0.6
+top_infill_extrusion_width = 0.6
 ```
 
 
