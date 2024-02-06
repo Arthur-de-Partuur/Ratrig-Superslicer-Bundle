@@ -80,7 +80,7 @@ All entries (or chapters) are stated within square brackets and contain the Tabn
 
 **Note: There are NO spaces between the tabname and entry name, only a colon**
 
-## STEP 1: Building block: Hidden entries
+## STEP 1: Building blocks: Hidden entries
 You can create hidden entries that will not be shown in SuperSlicer but that you can use to combine later when creating the final visible profile. I can create an entry for \"common PETG"\ that contains settings that I would like to always use when printing PETG (NOT brand specific for instance). Such a hidden entry is made by putting the entry name between asterix' \*, like so:
 
 **``[filament:*common PETG*]``**
