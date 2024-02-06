@@ -1,49 +1,52 @@
 # Ratrig-Superslicer-Bundle
 My SuperSlicer .ini file to be loaded in the Vendor folder
 
-# Introduction
+## Introduction
 I modified the Ratrig.ini file that can be found in the %appdata%\SuperSlicer\vendor directory (go to "Help" and click "Show configuration folder" to easily locate this file), assuming you have previously installed the Ratrig printer from the configuration menu.
 
 As I struggled with maintaining and aligning various parameters in between different print and printer profiles for my atrig VCore-3.1-300 3D-printer, I read an article on [Hackaday](https://hackaday.com/2022/10/18/3d-printering-managing-multiple-printing-profiles/) about SuperSlicer's Bundles . Althoug I do not fully grasp what this user is actually exporting, I started editing a copy of my Ratrig.ini file. Slowly I started to understand what the user is writing about.
-# How to Download
+
+## How to Download
 **1)** Navigate to the .ini file.
-
 **2)** Right click "Raw" and click "Save link as"
-
 **If you do not use the "Raw" button, you will get errors trying to import.**
 
 **Alternatively, download the whole repository as .zip**
 
-## RatRig profiles
-
-Based on the profiles from PR: https://github.com/slic3r/slic3r-profiles/pull/13 by top-gun.
-This is a continues work in progress.
-
-The graphics for the bed (SVG) was created by PwnCNC and published on Thingiverse under the Creative Commons Attribution license: https://www.thingiverse.com/thing:4861532/files
-
-# [vendor]
-Vendor name will be shown by the Config Wizard.
-## name = RatRig
-Configuration version of this file. Config file will only be installed, if the config_version differs.
-This means, the server may force the Slic3r configuration to be downgraded.
-## config_version = 2.0.1
-
-## Where to get the updates from?
-config_update_url = https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/blob/main/vendor/RatRig.ini
-
-# [printer_model:VC3_300]
-This contains the name of the printer, (nozzle) veriants, technology (fdm or fff in my case). The first nozzel size mentioned will be shown as the default.
-Also the bed model STL files van be stored here.
-
 # Build-up of this file
 ## General
-This file has "Chapters" for each tab in SuperSlicer.
--[print]
--[filament]
--[printer]
+The beginning of this file has some general stuff included so SuperSlicer knows what kind of printer it is dealing with, such as Vendor, Version of the config file etc.
+Further more, this file has "Chapters" for each tab in SuperSlicer.
+- [print]
+- [filament]
+- [printer]
 
 Each corresponding "chapter" contains all the settings that you can work with to build your profile
 ## Specific
+
+
+
+## [vendor]
+Vendor name will be shown by the Config Wizard.
+### name = RatRig
+Configuration version of this file. Config file will only be installed, if the config_version differs.
+This means, the server may force the Slic3r configuration to be downgraded.
+### config_version = 2.0.1
+
+### Where to get the updates from?
+config_update_url = https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/blob/main/vendor/RatRig.ini
+
+## [printer_model:VC3_300]
+This contains the name of the printer, (nozzle) veriants, technology (fdm or fff in my case). The first nozzel size mentioned will be shown as the default.
+Also the bed model STL files van be stored here.
+
+
+
+
+
+
+
+
 
 
 [*******************************************************PRINT-COMMON-SECTION-BELOW*******************************************************]
