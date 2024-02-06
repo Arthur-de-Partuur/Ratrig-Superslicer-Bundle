@@ -229,7 +229,42 @@ inherits = FWM-01 60nzl Powdercoated;*PEI-sheet*
 If we have done our job right, Superslicers printer profiles would show:
 ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/0a1d2a05-daf1-40e7-890f-b17228c8c551)
 
+## [filament]
+Next (again, in my usecase) is the choice of filament. In line with above, you can first create hidden entries for:
+- common ``[filament:*common*]``
+- material specific but not Brand specific ``[filament:*common PETG*]``
+- material + brand specific ``[filament:*BRAND A PETG*]``
 
+After these hidden entries are done, you can start compiling the visible profiles and possibly make them dependent on nozzle diameter and add pressure advance parameters and flow parameters to them.
+```
+[filament:BRAND-A PETG 040]
+compatible_printers_condition = printer_model=~/.*FWM-01.*/ && nozzle_diameter[0]==0.40
+start_filament_gcode = "; Filament gcode\nSET_PRESSURE_ADVANCE ADVANCE=[PA040]	;PA for 0.40nzl\n;SET_RETRACTION RETRACT_LENGTH=0.5 UNRETRACT_EXTRA_LENGTH=0.0"
+extrusion_multiplier = 0.99
+inherits = *common*;*common PETG*;*BRAND A PETG*
+filament_max_volumetric_speed = 24
+
+[filament:BRAND-B PETG 040]
+compatible_printers_condition = printer_model=~/.*FWM-01.*/ && nozzle_diameter[0]==0.40
+start_filament_gcode = "; Filament gcode\nSET_PRESSURE_ADVANCE ADVANCE=[PA040]	;PA for 0.40nzl\n;SET_RETRACTION RETRACT_LENGTH=0.5 UNRETRACT_EXTRA_LENGTH=0.0"
+extrusion_multiplier = 0.99
+inherits = *common*;*common PETG*;*BRAND A PETG*
+filament_max_volumetric_speed = 20
+
+[filament:BRAND-A PETG 060]
+compatible_printers_condition = printer_model=~/.*FWM-01.*/ && nozzle_diameter[0]==0.60
+start_filament_gcode = "; Filament gcode\nSET_PRESSURE_ADVANCE ADVANCE=[PA060]	;PA for 0.60nzl\n;SET_RETRACTION RETRACT_LENGTH=0.5 UNRETRACT_EXTRA_LENGTH=0.0"
+extrusion_multiplier = 0.98
+inherits = *common*;*common PETG*;*BRAND A PETG*
+filament_max_volumetric_speed = 32
+
+[filament:BRAND-B PETG 060]
+compatible_printers_condition = printer_model=~/.*FWM-01.*/ && nozzle_diameter[0]==0.60
+start_filament_gcode = "; Filament gcode\nSET_PRESSURE_ADVANCE ADVANCE=[PA060]	;PA for 0.60nzl\n;SET_RETRACTION RETRACT_LENGTH=0.5 UNRETRACT_EXTRA_LENGTH=0.0"
+extrusion_multiplier = 0.98
+inherits = *common*;*common PETG*;*BRAND A PETG*
+filament_max_volumetric_speed = 33
+```
 
 ## [print]
 Here we store all the settings that are changing due to our printing preferences. The settings from the Print tab of SuperSlicer are in general:
@@ -240,12 +275,10 @@ They way you can use this is to make seperate entries for:
 - different layer heights for easy switching
 - different profiles for different nozzle diameters
 
-### Print \*Hidden*\
-
-### Print Visible
 
 
-### [filament]
+
+
 
 
 
