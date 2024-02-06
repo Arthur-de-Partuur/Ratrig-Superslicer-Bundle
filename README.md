@@ -12,38 +12,39 @@ As I struggled with maintaining and aligning various parameters in between diffe
 
 **If you do not use the "Raw" button, you will get errors trying to import.**
 
-#Alternatively, download the whole repository as .zip:
+**Alternatively, download the whole repository as .zip**
 
 ## RatRig profiles
 
 Based on the profiles from PR: https://github.com/slic3r/slic3r-profiles/pull/13 by top-gun.
-resubmitted with some adjustments for SuperSlicer by top-gun, after intensive refinement from https://github.com/rtyr
+This is a continues work in progress.
 
 The graphics for the bed (SVG) was created by PwnCNC and published on Thingiverse under the Creative Commons Attribution license: https://www.thingiverse.com/thing:4861532/files
 
 # [vendor]
 Vendor name will be shown by the Config Wizard.
-# name = RatRig
+## name = RatRig
 Configuration version of this file. Config file will only be installed, if the config_version differs.
 This means, the server may force the Slic3r configuration to be downgraded.
-# config_version = 2.0.1
+## config_version = 2.0.1
 
-Where to get the updates from?
-config_update_url =
-The printer models will be shown by the Configuration Wizard in this order,
-also the first model installed & the first nozzle installed will be activated after install.
-for example by the melt zone size, or whether the nozzle is hardened.
-Printer model name will be shown by the installation wizard.
+## Where to get the updates from?
+config_update_url = https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/blob/main/vendor/RatRig.ini
 
-[printer_model:VC3_300]
-name = RatRig V-Core-3 300mm
-variants = 0.40; 0.25; 0.60; 0.80
-technology = FFF
-family = V-Core-3
-bed_model = rr-vc-300.stl
-bed_texture = rr-vc-300.svg
-thumbnail = VCore-thumbnail.png
-;default_materials = PETG Jupiter 0,25nzl; PETG Jupiter 0,40nzl; PETG Jupiter 0,60nzl; PETG Jupiter 0,80nzl; 
+# [printer_model:VC3_300]
+This contains the name of the printer, (nozzle) veriants, technology (fdm or fff in my case). The first nozzel size mentioned will be shown as the default.
+Also the bed model STL files van be stored here.
+
+# Build-up of this file
+## General
+This file has "Chapters" for each tab in SuperSlicer.
+-[print]
+-[filament]
+-[printer]
+
+Each corresponding "chapter" contains all the settings that you can work with to build your profile
+## Specific
+
 
 [*******************************************************PRINT-COMMON-SECTION-BELOW*******************************************************]
 # All presets starting with asterisk, for example *common*, are intermediate and they will
