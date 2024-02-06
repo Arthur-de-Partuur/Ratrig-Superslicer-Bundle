@@ -11,8 +11,34 @@ Yep,.... good question...
 
 I was experiencing some issues with all the different parameters and how to align these between print profiles and filament profiles.
 For instance, when I was tuning a PETG profile for Brand A, with a nozzle of 0.4mm I learned that the best result came with a temperature of 240 degrees C.
-This is also true for all other profiles of that same brand but with another nozzle diameter. With below method, I now can change https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/blob/main/README.md#filament
+This is also true for all other profiles of that same brand but with another nozzle diameter. I found it troublesome to go back to all my other profiles and change it there as well. 
 
+With below method, I now can change ``temperature = 240`` in ``[filament:*BRAND A PETG*]`` to have this updated in all my PETG filament profiles of that brand
+(https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/blob/main/README.md#filament)
+The same goes for a LOT of parameters such as bridge_fan_speed, filament cooling parameters per brand or even per filament type
+
+The most bennefit I get out of the print profiles. Speeds and Widths & Flow are regularly updated this way. The way Klipper works in combination with SuperSlicer makes it realy easy to use Custom variables that contain Pressure Advance values (in this case in the Notes section of the filament profile, but you can do a lot more with this):
+![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/d284dbdd-eb93-4fa7-aecf-572f72d71b85)
+
+These Values are used in the filament Custom G-code like so:
+
+![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/5e71c9cb-2d9b-468f-9ac5-c210043ba497)
+
+The way I set this up (see also further explanation below) is by creating a filament profile that contains the generic GCODE macro ``SET_PRESSURE_ADVANCE ADVANCE=[PA040]``, reading the Custom variable [PA040]:
+```
+[filament:PETG ColorFabb 0,40nzl]
+inherits = *common*;*PETG-Common*;*PETG ColorFabb*
+start_filament_gcode = "; Filament gcode\nSET_PRESSURE_ADVANCE ADVANCE=[PA040]
+```
+
+The Variable PA040 is stored in one line in the ``filament:*PETG ColorFabb*`` profile
+```
+filament:\*PETG ColorFabb\*
+filament_custom_variables = "PA025 = 0.160\nPA040 = 0.083\nPA060 = 0.042\nPA080 = 0.006"
+```
+So when I tune Pressure Advance, I update the outcome only in the INI file and I am assured it gets used everywhere.
+## But Arthur, Can you not just store separate profiles?
+Yes, that you can STILL do. With my ini file updated, I still make tweaks during itiration of a certain print. These updated profiles I save in SuperSlicer just like anyone would do. If I am happy with the print, I can update the ini file if needed and delete the modified profile from SuperSlicer, if I want.
 
 ## How to Download
 **1)** Navigate to the .ini file.
