@@ -13,8 +13,7 @@ I was experiencing some issues with all the different parameters and how to alig
 For instance, when I was tuning a PETG profile for Brand A, with a nozzle of 0.4mm I learned that the best result came with a temperature of 240 degrees C.
 This is also true for all other profiles of that same brand but with another nozzle diameter. I found it troublesome to go back to all my other profiles and change it there as well. 
 
-With below method, I now can change ``temperature = 240`` in ``[filament:*BRAND A PETG*]`` to have this updated in all my PETG filament profiles of that brand
-(https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/blob/main/README.md#filament)
+With below method, I now can change ``temperature = 240`` in ``[filament:*BRAND A PETG*]`` to have this updated in all my [PETG filament](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/blob/main/README.md#filament) profiles of that brand.
 The same goes for a LOT of parameters such as bridge_fan_speed, filament cooling parameters per brand or even per filament type
 
 The most bennefit I get out of the print profiles. Speeds and Widths & Flow are regularly updated this way. The way Klipper works in combination with SuperSlicer makes it realy easy to use Custom variables that contain Pressure Advance values (in this case in the Notes section of the filament profile, but you can do a lot more with this):
