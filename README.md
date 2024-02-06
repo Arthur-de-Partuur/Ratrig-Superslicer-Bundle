@@ -12,30 +12,28 @@ As I struggled with maintaining and aligning various parameters in between diffe
 
 **If you do not use the "Raw" button, you will get errors trying to import.**
 
-- ![](Images/Download.png) 
+#Alternatively, download the whole repository as .zip:
 
-Alternatively, download the whole repository as .zip:
+## RatRig profiles
 
-- ![](Images/DownloadRepo.png) # RatRig profiles
+Based on the profiles from PR: https://github.com/slic3r/slic3r-profiles/pull/13 by top-gun.
+resubmitted with some adjustments for SuperSlicer by top-gun, after intensive refinement from https://github.com/rtyr
 
-# Based on the profiles from PR: https://github.com/slic3r/slic3r-profiles/pull/13 by top-gun.
-# resubmitted with some adjustments for SuperSlicer by top-gun, after intensive refinement from https://github.com/rtyr
+The graphics for the bed (SVG) was created by PwnCNC and published on Thingiverse under the Creative Commons Attribution license: https://www.thingiverse.com/thing:4861532/files
 
-# The graphics for the bed (SVG) was created by PwnCNC and published on Thingiverse under the Creative Commons Attribution license: https://www.thingiverse.com/thing:4861532/files
+# [vendor]
+Vendor name will be shown by the Config Wizard.
+# name = RatRig
+Configuration version of this file. Config file will only be installed, if the config_version differs.
+This means, the server may force the Slic3r configuration to be downgraded.
+# config_version = 2.0.1
 
-[vendor]
-# Vendor name will be shown by the Config Wizard.
-name = RatRig
-# Configuration version of this file. Config file will only be installed, if the config_version differs.
-# This means, the server may force the Slic3r configuration to be downgraded.
-config_version = 2.0.1
-# Where to get the updates from?
+Where to get the updates from?
 config_update_url =
-# The printer models will be shown by the Configuration Wizard in this order,
-# also the first model installed & the first nozzle installed will be activated after install.
-#
-# for example by the melt zone size, or whether the nozzle is hardened.
-# Printer model name will be shown by the installation wizard.
+The printer models will be shown by the Configuration Wizard in this order,
+also the first model installed & the first nozzle installed will be activated after install.
+for example by the melt zone size, or whether the nozzle is hardened.
+Printer model name will be shown by the installation wizard.
 
 [printer_model:VC3_300]
 name = RatRig V-Core-3 300mm
