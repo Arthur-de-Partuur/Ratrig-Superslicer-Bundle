@@ -16,32 +16,35 @@ As I struggled with maintaining and aligning various parameters in between diffe
 # Build-up of this file
 ## General
 The beginning of this file has some general stuff included so SuperSlicer knows what kind of printer it is dealing with, such as Vendor, Version of the config file etc.
-Further more, this file has "Chapters" for each tab in SuperSlicer.
+Further more, this file has "Chapters" for each Tab in SuperSlicer.
 - [print]
 - [filament]
 - [printer]
 
 Each corresponding "chapter" contains all the settings that you can work with to build your profile
+
+## How does it work?
+All Entries (or chapters) are stated within square brackets and contain the Tabname and the name of the entry: "[Tabname:entry name]"
+**Note: There are no spaces between the tabname and entry name, only a colon**
+
+
+So if you want to create a filament profile for BRAND-A PETG, you would state
+- [filament:BRAND-A PETG]
+
+this would show up as:
+![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/483a9fa8-d807-4a39-a116-417afd62d986)
+
+
 ## Specific
+To explain a bit more in detail how I believe the file works, see below explanations.
 
-
-
-## [vendor]
+### [vendor]
 Vendor name will be shown by the Config Wizard.
-### name = RatRig
-Configuration version of this file. Config file will only be installed, if the config_version differs.
-This means, the server may force the Slic3r configuration to be downgraded.
-### config_version = 2.0.1
 
-### Where to get the updates from?
-config_update_url = https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/blob/main/vendor/RatRig.ini
+### [printer_model:VC3_300]
+Particularly the [printer model: can be handy in case you use more then one printer and want to make dependances between filaments and printers, for instance
 
-## [printer_model:VC3_300]
-This contains the name of the printer, (nozzle) veriants, technology (fdm or fff in my case). The first nozzel size mentioned will be shown as the default.
-Also the bed model STL files van be stored here.
-
-
-
+###
 
 
 
