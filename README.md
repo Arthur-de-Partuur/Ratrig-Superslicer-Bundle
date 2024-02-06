@@ -28,12 +28,12 @@ Further more, this file has "Chapters" for each Tab in SuperSlicer.
 
 Each corresponding "chapter" contains all the settings that you can work with to build your profile
 
-## How to build up the file
+# How to build up the file
 All entries (or chapters) are stated within square brackets and contain the Tabname and the name of the entry: "[Tabname:entry name]"
 
 **Note: There are NO spaces between the tabname and entry name, only a colon**
 
-### STEP 1: Hidden entries
+## STEP 1: Hidden entries
 You can create hidden entries that will not be shown in SuperSlicer but that you can use to combine later when creating the final visible profile. As per the above example of BRAND-A PETG, I can create an entry for \"common PETG"\ that contains settings that I would like to always use when printing PETG (NOT brand specific for instance). Such a hidden entry is made by putting the entry name between asterix' \*\, like so:
 ``[filament:*common PETG*]``
 
@@ -97,7 +97,7 @@ temperature = 240
 filament_max_speed = 290
 ```
 
-### STEP 2: visible entries
+## STEP 2: visible entries
 Now we need to create an entry that SuperSlicer is actualy going to show in the interface. If you want to create a filament profile for BRAND-A PETG, you would state
 ``[filament:BRAND-A PETG]`` **note: NO astrix \*\.**
 - this would show up as:
@@ -148,7 +148,7 @@ bed_texture = rr-vc-300.svg
 In the configuration wizard, this will show as:
 ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/3a605768-c311-47ee-a474-cb9f944dd586)
 
-### [printer]
+## [printer]
 Although in SuperSlicer, the printer-tab is the last, Tab, I believe this should be the first tab (at least in my usecase). 
 
 I use my printer with a variety of nozzle diameters (in this example 0.4mm and 0.6mm but in my actual profile I also use 0.25mm and 0.8mm) and multiple buildplates (Smooth PEI-sheet, Powdercoated PEI). I have calibrated my nozzle Z-offset on the most used plate (powdercoated PEI). I have learned that with the smooth PEI and POA I need a different Z-Offset. I have inserted these parameters in my printer profiles. 
