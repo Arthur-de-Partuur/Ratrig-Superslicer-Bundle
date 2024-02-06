@@ -266,6 +266,20 @@ inherits = *common*;*common PETG*;*BRAND A PETG*
 filament_max_volumetric_speed = 33
 ```
 
+If all is well, we now have created some profiles that are dependent on nozzle size and printer model and that load specific Extrusion Multiplier Volumetric Speed and Pressure Advance settings.
+So, if I choose the Printer FWM-01 with powder coated buildplate and nozzle 0.6
+![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/fa135f53-5b79-46b4-8d7f-a0aa20013eb8)
+
+I am only shown the filament profiles that are compiled and applicable for that printer (``Compatible_printers_condition = printer_model=~/.*FWM-01.*/ ``) and nozzle size `` && nozzle_diameter[0]==0.60``
+![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/bc1fe53e-69f1-40ba-81d7-9d3843aeb554)
+
+You can still see and use the other profiles by clicking on the green or red flag (SuperSlicer 2.5.59.6)
+![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/3dc11aaf-6833-454d-858b-8c2484588650)
+
+if this flag is not visible, you might want to enable this in the prefferences (Show incompatible print and filament presets):
+![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/366bdf15-c884-4b08-9d03-b808a11f85ff)
+
+
 ## [print]
 Here we store all the settings that are changing due to our printing preferences. The settings from the Print tab of SuperSlicer are in general:
 ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/0d0d9320-301b-4c55-aa12-e71a3ac1f4e7)
@@ -274,6 +288,23 @@ They way you can use this is to make seperate entries for:
 - different print speeds (high quality with lower speeds or flow rates or higher flowrates with possibly lower quality prints
 - different layer heights for easy switching
 - different profiles for different nozzle diameters
+
+As before, start off with a common entry and fantasise from there:
+```
+[print:*common*]
+all generic stuff here
+[print:*0.20mm*]
+;all settings related to Layer height 0.20mm such as
+layer_height = 0.20
+bottom_solid_layers = 3
+[print:*0.30mm*]
+;all settings related to Layer height 0.30mm
+layer_height = 0.30
+bottom_solid_layers = 2
+
+```
+
+
 
 
 
