@@ -19,6 +19,13 @@ As I struggled with maintaining and aligning various parameters in between diffe
 ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/574e2a71-dbb2-44c9-afe4-944270b470a0)
 1. Navigate to the "vendor" subfolder and copy paste the profile_test.ini -file in there (or the Ratrig file if you choose to copy my settings)
 1. Navigate to the "profiles" subfolder and copy in the profile_test sub folder (if you use my ratrig.ini than you don't need to do this as there is already a ratrig folder. This profiles folder contains the pictures that can be used in the ini file to have your superslicer buildplate look "the part"
+2. Now open or restart SuperSlicer and start the configuration wizard...
+3. Look for profile_test (or ratrig if you choose my ini file) and sellect your printers with the right nozzle sizes
+4. click next
+5. at "Filaments" select your newly created Printer, Type, Vendor and Profile (make sure the boxes are ticked)
+  ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/03b2deb1-9fad-4e64-9c93-d1d4f15f4620)
+
+7. Select Finish
 
 # Build-up of the .ini file
 ## General
