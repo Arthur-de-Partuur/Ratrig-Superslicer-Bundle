@@ -25,13 +25,13 @@ Each corresponding "chapter" contains all the settings that you can work with to
 
 ## How does it work?
 All Entries (or chapters) are stated within square brackets and contain the Tabname and the name of the entry: "[Tabname:entry name]"
-**Note: There are no spaces between the tabname and entry name, only a colon**
+
+**Note: There are NO spaces between the tabname and entry name, only a colon**
 
 
 So if you want to create a filament profile for BRAND-A PETG, you would state
 - [filament:BRAND-A PETG]
-
-this would show up as:
+- this would show up as:
 ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/483a9fa8-d807-4a39-a116-417afd62d986)
 
 
