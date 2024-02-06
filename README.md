@@ -11,7 +11,8 @@ Yep,.... good question...
 
 I was experiencing some issues with all the different parameters and how to align these between print profiles and filament profiles.
 For instance, when I was tuning a PETG profile for Brand A, with a nozzle of 0.4mm I learned that the best result came with a temperature of 240 degrees C.
-This is also true for all other profiles of that same brand but with another nozzle diameter. With below method, I now can change
+This is also true for all other profiles of that same brand but with another nozzle diameter. With below method, I now can change https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/blob/main/README.md#filament
+
 
 ## How to Download
 **1)** Navigate to the .ini file.
