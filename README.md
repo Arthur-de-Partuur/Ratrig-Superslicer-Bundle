@@ -395,7 +395,7 @@ inherits = *common*; *0.20mm*; *0.60nzl*
 [print:0.30mm 0.60nzl]
 inherits = *common*; *0.30mm*; *0.60nzl*
 ```
-# The Actual RatRig.ini
+# 5 The Actual RatRig.ini
 My Ratrig.ini contains these sections;
 ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/07ed95bf-d7e9-49c8-a76e-2c3d52590c37)
 
