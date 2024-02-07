@@ -1,12 +1,12 @@
-# Ratrig-Superslicer-Bundle
+# 1 Ratrig-Superslicer-Bundle
 My SuperSlicer .ini file to be loaded in the Vendor folder
 
-## Introduction
+## 1.1 Introduction
 I modified the Ratrig.ini file that can be found in the %appdata%\SuperSlicer\vendor directory (go to "Help" and click "Show configuration folder" to easily locate this file), assuming you have previously installed the Ratrig printer from the configuration menu.
 
 As I struggled with maintaining and aligning various parameters in between different print and printer profiles for my Ratrig VCore-3.1-300 3D-printer, I read an article on [Hackaday](https://hackaday.com/2022/10/18/3d-printering-managing-multiple-printing-profiles/) about SuperSlicer's Bundles . Althoug I do not fully grasp what this user is actually exporting, I started editing a copy of my Ratrig.ini file. Slowly I started to understand what the user is writing about.
 
-## Why,.... for HEAVENS SAKE WHY!!!!
+## 1.2 Why,.... for HEAVENS SAKE WHY!!!!
 Yep,.... good question...
 
 I was experiencing some issues with all the different parameters and how to align these between print profiles and filament profiles.
@@ -36,10 +36,10 @@ filament:\*PETG ColorFabb\*
 filament_custom_variables = "PA025 = 0.160\nPA040 = 0.083\nPA060 = 0.042\nPA080 = 0.006"
 ```
 So when I tune Pressure Advance, I update the outcome only in the INI file and I am assured it gets used everywhere.
-## But Arthur, Can you not just store separate profiles?
+## 1.3 But Arthur, Can you not just store separate profiles?
 Yes, that you can STILL do. With my ini file updated, I still make tweaks during itiration of a certain print. These updated profiles I save in SuperSlicer just like anyone would do. If I am happy with the print, I can update the ini file if needed and delete the modified profile from SuperSlicer, if I want.
 
-## How to Download
+## 1.4 How to Download
 **1)** Navigate to the .ini file.
 
 **2)** Right click "Raw" and click "Save link as"
@@ -48,7 +48,7 @@ Yes, that you can STILL do. With my ini file updated, I still make tweaks during
 
 **Alternatively, download the whole repository as .zip**
 
-## How to install
+## 1.5 How to install
 1. Go to your configuration folder. Easiest way is to open SuperSlicer and click Help / Show Configuration Folder:
 ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/574e2a71-dbb2-44c9-afe4-944270b470a0)
 1. Navigate to the "vendor" subfolder and copy paste the profile_test.ini -file in there (or the Ratrig file if you choose to copy my settings)
@@ -61,8 +61,8 @@ Yes, that you can STILL do. With my ini file updated, I still make tweaks during
 
 7. Select Finish
 
-# Build-up of the .ini file
-## General
+# 2 Build-up of the .ini file
+## 2.1 General
 The .ini file contains 5 sections / chapters (whatever you want to call them)
 The beginning of this file has some general stuff included so SuperSlicer knows what kind of printer it is dealing with, such as
 - [vendor]
