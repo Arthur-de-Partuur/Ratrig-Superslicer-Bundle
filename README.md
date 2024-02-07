@@ -75,7 +75,7 @@ Further more, this file has "sections" for each Tab in SuperSlicer.
 
 Each corresponding "section" contains all the settings that you can work with to build your profile
 
-# How to build up the file
+# 2. How to build up the file
 All entries (or chapters) are stated within square brackets and contain the Tabname and the name of the entry: ``[tabname:entry name]``
 
 **Note: There are NO spaces between the tabname and entry name, only a colon**
@@ -173,10 +173,10 @@ Above is a simplefied version of what I use.
 
 
 
-# Usecase
+# 2. Usecase
 To explain a bit more in detail how I believe the file works, see below explanations.
 
-## [vendor]
+## 2. [vendor]
 Vendor name will be shown by the Config Wizard. In my example, I have used 
 ``name = PROFILE_TEST``
 
