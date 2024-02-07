@@ -206,6 +206,8 @@ In my workflow, I start in the Printer tab, choosing the right buildplate and no
 - machine limits (accel, feedrate)
 - all specific GCODES for starting, interlayer and ending
 - see the included profile_test.ini
+![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/e92cb403-9f48-4f2b-b3b6-3f9235c0f232)
+
 
 Next I create a printer specific section that defines one particulare printer (in case you would operate more printers of the same vendor and type, this could be handy. If not, this can also be combined with above common entry):
 ``[printer:*FWM-01-klipper*]`` (see included example to see what I have stuffed in here)
@@ -279,7 +281,11 @@ If we have done our job right, Superslicers printer profiles would show:
 ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/0a1d2a05-daf1-40e7-890f-b17228c8c551)
 
 ## [filament]
-Next (again, in my usecase) is the choice of filament. In line with above, you can first create hidden entries for:
+Next (again, in my usecase) is the choice of filament. In here you can store all parameters relating to filament.
+![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/d908a42e-1e1f-4042-b316-4828bdef8bca)
+
+
+In line with above, you can first create hidden entries for:
 - common ``[filament:*common*]``
 - material specific but not Brand specific ``[filament:*common PETG*]``
 - material + brand specific ``[filament:*BRAND A PETG*]``
