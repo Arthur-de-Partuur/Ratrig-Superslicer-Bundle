@@ -75,7 +75,7 @@ Further more, this file has "sections" for each Tab in SuperSlicer.
 
 Each corresponding "section" contains all the settings that you can work with to build your profile
 
-# 2. How to build up the file
+# 3. How to build up the file
 All entries (or chapters) are stated within square brackets and contain the Tabname and the name of the entry: ``[tabname:entry name]``
 
 **Note: There are NO spaces between the tabname and entry name, only a colon**
@@ -173,16 +173,16 @@ Above is a simplefied version of what I use.
 
 
 
-# 2. Usecase
+# 4 Usecase
 To explain a bit more in detail how I believe the file works, see below explanations.
 
-## 2. [vendor]
+## 4.1 [vendor]
 Vendor name will be shown by the Config Wizard. In my example, I have used 
 ``name = PROFILE_TEST``
 
 This is also the name of the INI file and I believe there should also be a folder with the same name to put bed_stl and png files in (not realy sure how this works yet)
 
-## [printer_model:FWM-01]
+## 4.2 [printer_model:FWM-01]
 Particularly the ``[printer model: ]`` can be handy in case you use more then one printer and want to make dependances between filaments and printers, for instance
 see above also my inclusion for compatible_printers_condition = printer_model=~/.*FWM-01.*/
 In this example, I have used:
@@ -197,7 +197,7 @@ bed_texture = rr-vc-300.svg
 In the configuration wizard, this will show as:
 ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/3a605768-c311-47ee-a474-cb9f944dd586)
 
-## [printer]
+## 4.3 [printer]
 Although in SuperSlicer, the printer-tab is the last, Tab, I believe this should be the first tab (at least in my usecase). 
 
 I use my printer with a variety of nozzle diameters (in this example 0.4mm and 0.6mm but in my actual profile I also use 0.25mm and 0.8mm) and multiple buildplates (Smooth PEI-sheet, Powdercoated PEI). I have calibrated my nozzle Z-offset on the most used plate (powdercoated PEI). I have learned that with the smooth PEI and POA I need a different Z-Offset. I have inserted these parameters in my printer profiles. 
@@ -280,7 +280,7 @@ inherits = FWM-01 60nzl Powdercoated;*PEI-sheet*
 If we have done our job right, Superslicers printer profiles would show:
 ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/0a1d2a05-daf1-40e7-890f-b17228c8c551)
 
-## [filament]
+## 4.4 [filament]
 Next (again, in my usecase) is the choice of filament. In here you can store all parameters relating to filament.
 ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/d908a42e-1e1f-4042-b316-4828bdef8bca)
 
@@ -335,7 +335,7 @@ if this flag is not visible, you might want to enable this in the prefferences (
 ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/366bdf15-c884-4b08-9d03-b808a11f85ff)
 
 
-## [print]
+## 4.5 [print]
 Here we store all the settings that are changing due to our printing preferences. The settings from the Print tab of SuperSlicer are in general:
 ![image](https://github.com/Arthur-de-Partuur/Ratrig-Superslicer-Bundle/assets/23432540/0d0d9320-301b-4c55-aa12-e71a3ac1f4e7)
 
